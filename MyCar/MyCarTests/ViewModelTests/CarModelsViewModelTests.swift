@@ -35,9 +35,9 @@ class CarModelsViewModelTests: XCTestCase {
         mockedAPI.given(.fetchCarModels(page: .any, manufacturerID: .any, willReturn: responseSubject))
         
         let exp = expectation(description: "Fetch Models Success")
-        sut.modelsObservable.subscribe(onNext: { [weak self] models in
+        sut.allModels.subscribe(onNext: { [weak self] models in
             guard let weakSelf = self else { return }
-            if models.count > 0 && weakSelf.sut.shouldFetchMore {
+            if models.count > 0 && !weakSelf.sut.shouldFetchMore {
                 exp.fulfill()
             }
         }).disposed(by: bag)
@@ -57,8 +57,7 @@ class CarModelsViewModelTests: XCTestCase {
         mockedAPI.given(.fetchCarModels(page: .any, manufacturerID: .any, willReturn: responseSubject))
         
         let exp = expectation(description: "Fetch Models Eror")
-        sut.errorObservable.subscribe(onNext: { [weak self] errorMsg in
-            guard let weakSelf = self else { return }
+        sut.errorObservable.subscribe(onNext: { errorMsg in
             if !errorMsg.isEmpty {
                 exp.fulfill()
             }

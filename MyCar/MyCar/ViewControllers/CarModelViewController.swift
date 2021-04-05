@@ -1,5 +1,5 @@
 //
-//  ManufacturersViewController.swift
+//  CarModelViewController.swift
 //  MyCar
 //
 //  Created by Ashutosh Dubey on 05/04/21.
@@ -9,55 +9,55 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ManufacturersViewController: UIViewController {
+
+class CarModelViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    var viewModel: ManufacturersViewModel!
+    var viewModel: CarModelsViewModel!
+    var manufacturer: Manufacture!
+    
     private let bag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var noMoreDataLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupBinding()
-        viewModel.fetchManufacturers()
+        viewModel.fetchCarModels(manufacturerID: manufacturer.id)
     }
     
     private func setupUI() {
-        title = " Manufacturers"
-        titleLabel.text = "Select Manufacturers"
+        title = "Car Model"
+        titleLabel.text = "Select Car Model"
         
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "MyCarTableViewCell", bundle: nil), forCellReuseIdentifier: "MyCarTableViewCell")
         tableView.layer.cornerRadius = 15
-        noMoreDataLabel.text = "No More Data!"
     }
-            
+    
     private func setupBinding() {
-        viewModel.manufacturers.bind(to: tableView.rx.items(cellIdentifier: "MyCarTableViewCell", cellType: MyCarTableViewCell.self)) { row, data, cell in
+        viewModel.allModels.bind(to: tableView.rx.items(cellIdentifier: "MyCarTableViewCell", cellType: MyCarTableViewCell.self)) { row, data, cell in
             cell.nameLabel.text = data.name
             cell.setupColor(isEven: row % 2 == 0)
         }.disposed(by: bag)
         
         tableView.rx.willDisplayCell.subscribe(onNext: { [weak self] cell, indexPath in
             guard let weakSelf = self else {return}
-            if weakSelf.viewModel.manufacturers.value.count - 1 == indexPath.row
+            if weakSelf.viewModel.allModels.value.count - 1 == indexPath.row
                 && weakSelf.viewModel.isLoading.value == false {
-                weakSelf.viewModel.fetchManufacturers()
+                weakSelf.viewModel.fetchCarModels(manufacturerID: weakSelf.manufacturer.id)
             }
             
         }).disposed(by: bag)
         
-        tableView.rx.modelSelected(Manufacture.self)
+        tableView.rx.modelSelected(CarModel.self)
             .subscribe(onNext: { [weak self] (model) in
-                guard let weakSelf = self else {return}
-                weakSelf.viewModel.manufacturerSelected(source: weakSelf, manufacture: model)
+                self?.showFinalAlert(model: model)
             }).disposed(by: bag)
         
         viewModel.isLoading.subscribe(onNext: { [weak self] isLoading in
@@ -68,8 +68,6 @@ class ManufacturersViewController: UIViewController {
                 self?.indicator.stopAnimating()
             }
         }).disposed(by: bag)
-        
-        viewModel.noMoreFetch.map{!$0}.bind(to: noMoreDataLabel.rx.isHidden).disposed(by: bag)
         
         viewModel.errorObservable.subscribe(onNext: { [weak self] message in
             self?.showErrorAlert(message)
@@ -82,6 +80,12 @@ class ManufacturersViewController: UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    private func showFinalAlert(model: CarModel) {
+        let message = "You have selected \(manufacturer.name)'s \(model.name) model"
+        let alert = UIAlertController(title: "Thank you!", message:message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
 }
-
-

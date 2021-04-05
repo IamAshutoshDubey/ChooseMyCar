@@ -9,9 +9,11 @@ import UIKit
 
 class MyCarTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override open func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
     
     func setupColor(isEven: Bool) {

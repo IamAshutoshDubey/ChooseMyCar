@@ -7,6 +7,7 @@
 
 import UIKit
 
+//sourcery: AutoMockable
 public protocol BaseRouterType {
     func push(view: ViewControllerType, on sender: ViewControllerType)
     func pop(view: ViewControllerType)

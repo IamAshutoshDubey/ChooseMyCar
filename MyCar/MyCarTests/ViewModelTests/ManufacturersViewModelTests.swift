@@ -14,14 +14,16 @@ class ManufacturersViewModelTests: XCTestCase {
 
     var sut: ManufacturersViewModel!
     var mockedAPI: CarAPITypeMock!
+    var mockedRouter: AppRouterTypeMock!
     
     private var bag: DisposeBag!
 
     
     override func setUpWithError() throws {
         mockedAPI = CarAPITypeMock()
+        mockedRouter = AppRouterTypeMock()
         bag = DisposeBag()
-        sut = ManufacturersViewModel(api: mockedAPI)
+        sut = ManufacturersViewModel(api: mockedAPI, router: mockedRouter)
     }
 
     override func tearDownWithError() throws {
@@ -35,14 +37,14 @@ class ManufacturersViewModelTests: XCTestCase {
         mockedAPI.given(.fetchManufacturers(page: .any, willReturn: responseSubject))
         
         let exp = expectation(description: "Fetch Manufacturer Success")
-        sut.manufacturersObservable.subscribe(onNext: { manufacturers in
+        sut.manufacturers.subscribe(onNext: { manufacturers in
             if manufacturers.count > 0 {
                 exp.fulfill()
             }
         }).disposed(by: bag)
         sut.fetchManufacturers()
         
-        let response =  ManufacturerResponse(page: 0, totalPageCount: 10, manufactures: [Manufacture(name: "BMW", id: "130")])
+        let response = ManufacturerResponse(page: 0, totalPageCount: 10, manufactures: [Manufacture(name: "BMW", id: "130")])
         responseSubject.onNext(response)
         waitForExpectations(timeout: 2) {
             if $0 != nil { XCTFail("Expectation not fulfilled") }
@@ -67,13 +69,12 @@ class ManufacturersViewModelTests: XCTestCase {
         }
     }
     
-    func testFetchMoreLogic() {
+    func testNoMoreFetch() {
         let responseSubject = PublishSubject<ManufacturerResponse>()
         mockedAPI.given(.fetchManufacturers(page: .any, willReturn: responseSubject))
         let exp = expectation(description: "Fetch More Logic")
-        sut.manufacturersObservable.subscribe(onNext: { [weak self] errorMsg in
-            guard let weakself = self else {return}
-            if weakself.sut.shouldFetchMore == false {
+        sut.noMoreFetch.subscribe(onNext: { noMoreFetch in
+            if noMoreFetch {
                 exp.fulfill()
             }
         }).disposed(by: bag)
@@ -86,6 +87,8 @@ class ManufacturersViewModelTests: XCTestCase {
     }
 
     func testManufacturerSelected() {
-        
+        let selectedModel = Manufacture(name: "", id: "")
+        sut.manufacturerSelected(source: ViewControllerTypeMock(), manufacture: selectedModel)
+        mockedRouter.verify(.navigateToCarModels(source: .any, .any), count: 1)
     }
 }

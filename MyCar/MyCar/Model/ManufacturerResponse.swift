@@ -18,19 +18,6 @@ struct ManufacturerResponse: Decodable {
     var totalPageCount: Int
     var manufactures: [Manufacture]
     
-    private struct DynamicCodingKeys: CodingKey {
-
-            var stringValue: String
-            init?(stringValue: String) {
-                self.stringValue = stringValue
-            }
-
-            var intValue: Int?
-            init?(intValue: Int) {
-                return nil
-            }
-        }
-    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         page = try! container.decode(Int.self, forKey: .page)

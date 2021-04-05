@@ -39,6 +39,7 @@
 		C5ACF7F6261B266300AB8BC7 /* CarModelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF7F5261B266300AB8BC7 /* CarModelsViewModel.swift */; };
 		C5ACF7FA261B282E00AB8BC7 /* CarModelsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF7F9261B282E00AB8BC7 /* CarModelsViewModelTests.swift */; };
 		C5ACF803261B2DAD00AB8BC7 /* Cars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5ACF802261B2DAD00AB8BC7 /* Cars.storyboard */; };
+		C5ACF80A261B4CE400AB8BC7 /* CarModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF809261B4CE400AB8BC7 /* CarModelViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		C5ACF7F5261B266300AB8BC7 /* CarModelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelsViewModel.swift; sourceTree = "<group>"; };
 		C5ACF7F9261B282E00AB8BC7 /* CarModelsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelsViewModelTests.swift; sourceTree = "<group>"; };
 		C5ACF802261B2DAD00AB8BC7 /* Cars.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cars.storyboard; sourceTree = "<group>"; };
+		C5ACF809261B4CE400AB8BC7 /* CarModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				C5ACF7AA261B118C00AB8BC7 /* ManufacturersViewController.swift */,
+				C5ACF809261B4CE400AB8BC7 /* CarModelViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				C5ACF773261AD33900AB8BC7 /* AppAssembly.swift in Sources */,
 				C5ACF77E261AD73E00AB8BC7 /* CarAPI.swift in Sources */,
 				C5ACF74B261AC5CA00AB8BC7 /* NetworkClient.swift in Sources */,
+				C5ACF80A261B4CE400AB8BC7 /* CarModelViewController.swift in Sources */,
 				C5ACF7F6261B266300AB8BC7 /* CarModelsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

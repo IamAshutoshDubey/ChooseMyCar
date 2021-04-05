@@ -25,14 +25,21 @@ class AppAssembly: Assembly {
         container.register(CarAPIType.self) { (resolver) in
             return CarAPI(networkClient: resolver.resolve(NetworkClientType.self)!)
         }
-
-        container.register(ManufacturersViewModel.self) { (resolver) in
-            return ManufacturersViewModel(api: resolver.resolve(CarAPIType.self)!)
-        }
         
         container.register(AppRouterType.self) { (resolver) in
             return AppRouter(resolver: resolver)
         }
+        
+        container.register(ManufacturersViewModel.self) { (resolver) in
+            let api = resolver.resolve(CarAPIType.self)!
+            let router = resolver.resolve(AppRouterType.self)!
+            return ManufacturersViewModel(api: api, router: router)
+        }
+        
+        container.register(CarModelsViewModel.self) { (resolver) in
+            return CarModelsViewModel(api: resolver.resolve(CarAPIType.self)!)
+        }
+       
 
     }
 }

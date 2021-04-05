@@ -12,6 +12,7 @@ import RxSwift
 //sourcery: AutoMockable
 protocol AppRouterType: BaseRouterType {
     func startJourney(window: UIWindow)
+    func navigateToCarModels(source: ViewControllerType, _ manufacture: Manufacture)
 }
 
 struct AppRouter: AppRouterType {
@@ -32,5 +33,15 @@ struct AppRouter: AppRouterType {
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+    
+    func navigateToCarModels(source: ViewControllerType, _ manufacture: Manufacture) {
+        guard let viewController =  storyboard.instantiateViewController(identifier: "CarModelViewController")  as? CarModelViewController else {
+            return
+        }
+        let viewModel = resolver.resolve(CarModelsViewModel.self)!
+        viewController.viewModel = viewModel
+        viewController.manufacturer = manufacture
+        source.push(viewController, animated: true)
     }
 }
