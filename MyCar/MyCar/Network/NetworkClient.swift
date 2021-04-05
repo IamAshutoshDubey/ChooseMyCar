@@ -15,23 +15,17 @@ protocol NetworkClientType {
 class NetworkClient: NSObject, NetworkClientType {
     var task: URLSessionTask?
     let baseUrl: String
+    var headers: [String: String] = [:]
     var session: URLSession?
     
-    public init(baseUrl: String) {
+    public init(baseUrl: String, headers: [String: String] = [:]) {
         self.baseUrl = baseUrl
+        self.headers = headers
     }
     
     func getRequest<ResponseType>(path: String, urlParameters: [String : String]) -> PublishSubject<ResponseType> where ResponseType : Decodable {
         
-        let url = URL(string: self.baseUrl)!.appendingPathComponent(path)
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        urlComponents?.queryItems = urlParameters.map {key, value in
-            URLQueryItem(name: key,
-                         value: value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
-        }
-        var request = URLRequest(url: (urlComponents?.url!)!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 60.0)
-        
-        request.httpMethod = "GET"
+        let request = buildGetRequest(path: path, urlParameters)
         
         if session == nil {
             session = URLSession(configuration: .default, delegate: nil, delegateQueue: nil)
@@ -45,16 +39,13 @@ class NetworkClient: NSObject, NetworkClientType {
                    noInternetError.code == NSURLErrorNotConnectedToInternet,
                    noInternetError.domain == NSURLErrorDomain {
                     responseSubject.onError(HTTPNetworkError.noInternetConnection)
-                    print(error)
                     return
                 }
                 responseSubject.onError(HTTPNetworkError.other)
-                print(error)
                 return
             }
             
             if let response = response as? HTTPURLResponse {
-                print(data)
                 switch response.statusCode {
                     case 200...299:
                         guard let responseData = data else {
@@ -63,18 +54,36 @@ class NetworkClient: NSObject, NetworkClientType {
                         }
                         do {
                             let apiResponse = try JSONDecoder().decode(ResponseType.self, from: responseData)
+                            print(apiResponse)
                             responseSubject.onNext(apiResponse)
                         } catch {
                             print(error)
                             responseSubject.onError(HTTPNetworkError.unableToDecode)
                         }
                     default:
-                        print(error)
                         responseSubject.onError(HTTPNetworkError.other)
                 }
             }
         })
         self.task?.resume()
         return responseSubject
+    }
+    
+    private func buildGetRequest(path: String, _ parameters: [String : String]) -> URLRequest {
+        let url = URL(string: self.baseUrl)!.appendingPathComponent(path)
+        var urlParameters:  [String : String] = parameters
+        for headerKey in headers.keys {
+            urlParameters[headerKey] = headers[headerKey]
+        }
+        
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        urlComponents?.queryItems = urlParameters.map {key, value in
+            URLQueryItem(name: key,
+                         value: value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
+        }
+        var request = URLRequest(url: (urlComponents?.url!)!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 60.0)
+        
+        request.httpMethod = "GET"
+        return request
     }
 }

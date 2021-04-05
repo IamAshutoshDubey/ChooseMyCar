@@ -21,6 +21,12 @@
 		C5ACF740261ABFD700AB8BC7 /* SwiftyMocky in Frameworks */ = {isa = PBXBuildFile; productRef = C5ACF73F261ABFD700AB8BC7 /* SwiftyMocky */; };
 		C5ACF74B261AC5CA00AB8BC7 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF74A261AC5CA00AB8BC7 /* NetworkClient.swift */; };
 		C5ACF76A261ACEAB00AB8BC7 /* HTTPNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF769261ACEAB00AB8BC7 /* HTTPNetworkError.swift */; };
+		C5ACF76E261AD2EE00AB8BC7 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF76D261AD2EE00AB8BC7 /* AppManager.swift */; };
+		C5ACF773261AD33900AB8BC7 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF772261AD33900AB8BC7 /* AppAssembly.swift */; };
+		C5ACF779261AD3B400AB8BC7 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF778261AD3B400AB8BC7 /* NetworkConstants.swift */; };
+		C5ACF77E261AD73E00AB8BC7 /* CarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF77D261AD73E00AB8BC7 /* CarAPI.swift */; };
+		C5ACF78B261AD82A00AB8BC7 /* ManufacturerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF78A261AD82A00AB8BC7 /* ManufacturerResponse.swift */; };
+		C5ACF793261AD95700AB8BC7 /* CarModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF792261AD95700AB8BC7 /* CarModelResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,12 @@
 		C5ACF6FD261ABC1900AB8BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5ACF74A261AC5CA00AB8BC7 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		C5ACF769261ACEAB00AB8BC7 /* HTTPNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPNetworkError.swift; sourceTree = "<group>"; };
+		C5ACF76D261AD2EE00AB8BC7 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		C5ACF772261AD33900AB8BC7 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
+		C5ACF778261AD3B400AB8BC7 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		C5ACF77D261AD73E00AB8BC7 /* CarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAPI.swift; sourceTree = "<group>"; };
+		C5ACF78A261AD82A00AB8BC7 /* ManufacturerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturerResponse.swift; sourceTree = "<group>"; };
+		C5ACF792261AD95700AB8BC7 /* CarModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,9 @@
 		C5ACF6D8261ABC1700AB8BC7 /* MyCar */ = {
 			isa = PBXGroup;
 			children = (
+				C5ACF789261AD80B00AB8BC7 /* Model */,
+				C5ACF77C261AD72B00AB8BC7 /* API */,
+				C5ACF771261AD32D00AB8BC7 /* Assembly */,
 				C5ACF749261AC5B800AB8BC7 /* Network */,
 				C5ACF6D9261ABC1700AB8BC7 /* AppDelegate.swift */,
 				C5ACF6DB261ABC1700AB8BC7 /* SceneDelegate.swift */,
@@ -105,6 +120,7 @@
 				C5ACF6E2261ABC1900AB8BC7 /* Assets.xcassets */,
 				C5ACF6E4261ABC1900AB8BC7 /* LaunchScreen.storyboard */,
 				C5ACF6E7261ABC1900AB8BC7 /* Info.plist */,
+				C5ACF76D261AD2EE00AB8BC7 /* AppManager.swift */,
 			);
 			path = MyCar;
 			sourceTree = "<group>";
@@ -139,8 +155,34 @@
 			children = (
 				C5ACF74A261AC5CA00AB8BC7 /* NetworkClient.swift */,
 				C5ACF769261ACEAB00AB8BC7 /* HTTPNetworkError.swift */,
+				C5ACF778261AD3B400AB8BC7 /* NetworkConstants.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C5ACF771261AD32D00AB8BC7 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				C5ACF772261AD33900AB8BC7 /* AppAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		C5ACF77C261AD72B00AB8BC7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C5ACF77D261AD73E00AB8BC7 /* CarAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C5ACF789261AD80B00AB8BC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5ACF78A261AD82A00AB8BC7 /* ManufacturerResponse.swift */,
+				C5ACF792261AD95700AB8BC7 /* CarModelResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,10 +299,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5ACF779261AD3B400AB8BC7 /* NetworkConstants.swift in Sources */,
+				C5ACF793261AD95700AB8BC7 /* CarModelResponse.swift in Sources */,
 				C5ACF76A261ACEAB00AB8BC7 /* HTTPNetworkError.swift in Sources */,
 				C5ACF6DE261ABC1700AB8BC7 /* ViewController.swift in Sources */,
 				C5ACF6DA261ABC1700AB8BC7 /* AppDelegate.swift in Sources */,
+				C5ACF76E261AD2EE00AB8BC7 /* AppManager.swift in Sources */,
 				C5ACF6DC261ABC1700AB8BC7 /* SceneDelegate.swift in Sources */,
+				C5ACF78B261AD82A00AB8BC7 /* ManufacturerResponse.swift in Sources */,
+				C5ACF773261AD33900AB8BC7 /* AppAssembly.swift in Sources */,
+				C5ACF77E261AD73E00AB8BC7 /* CarAPI.swift in Sources */,
 				C5ACF74B261AC5CA00AB8BC7 /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
