@@ -32,7 +32,7 @@ class ManufacturersViewModelTests: XCTestCase {
 
     func testFetchSuccess() {
         let responseSubject = PublishSubject<ManufacturerResponse>()
-        mockedAPI.given(.fetchManufacturers(page: 0, willReturn: responseSubject))
+        mockedAPI.given(.fetchManufacturers(page: .any, willReturn: responseSubject))
         
         let exp = expectation(description: "Fetch Manufacturer Success")
         sut.manufacturersObservable.subscribe(onNext: { manufacturers in
@@ -44,14 +44,14 @@ class ManufacturersViewModelTests: XCTestCase {
         
         let response =  ManufacturerResponse(page: 0, totalPageCount: 10, manufactures: [Manufacture(name: "BMW", id: "130")])
         responseSubject.onNext(response)
-        waitForExpectations(timeout: 10) {
+        waitForExpectations(timeout: 2) {
             if $0 != nil { XCTFail("Expectation not fulfilled") }
         }
     }
     
     func testFetchError() {
         let responseSubject = PublishSubject<ManufacturerResponse>()
-        mockedAPI.given(.fetchManufacturers(page: 0, willReturn: responseSubject))
+        mockedAPI.given(.fetchManufacturers(page: .any, willReturn: responseSubject))
         
         let exp = expectation(description: "Fetch Manufacturer Error")
         sut.errorObservable.subscribe(onNext: { errorMsg in
@@ -60,10 +60,27 @@ class ManufacturersViewModelTests: XCTestCase {
             }
         }).disposed(by: bag)
         
-       
         sut.fetchManufacturers()
         responseSubject.onError(HTTPNetworkError.other)
-        waitForExpectations(timeout: 10) {
+        waitForExpectations(timeout: 2) {
+            if $0 != nil { XCTFail("Expectation not fulfilled") }
+        }
+    }
+    
+    func testFetchMoreLogic() {
+        let responseSubject = PublishSubject<ManufacturerResponse>()
+        mockedAPI.given(.fetchManufacturers(page: .any, willReturn: responseSubject))
+        let exp = expectation(description: "Fetch More Logic")
+        sut.manufacturersObservable.subscribe(onNext: { [weak self] errorMsg in
+            guard let weakself = self else {return}
+            if weakself.sut.shouldFetchMore == false {
+                exp.fulfill()
+            }
+        }).disposed(by: bag)
+        sut.fetchManufacturers()
+        let response =  ManufacturerResponse(page: 0, totalPageCount: 1, manufactures: [Manufacture(name: "BMW", id: "130")])
+        responseSubject.onNext(response)
+        waitForExpectations(timeout: 2) {
             if $0 != nil { XCTFail("Expectation not fulfilled") }
         }
     }

@@ -45,6 +45,12 @@ struct CarModelResponse: Decodable {
         }
         models = tempModels
     }
+    
+    init(page: Int, totalPageCount: Int, models: [CarModel]) {
+        self.page = page
+        self.totalPageCount = totalPageCount
+        self.models = models
+    }
 }
 
 struct CarModel {
