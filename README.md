@@ -1,7 +1,7 @@
 # Choose My Car
 
 ## Architecture
-MVVM with Coordinator (MVVM-C) has been used. 
+MVVM with Coordinator (MVVM-C)
 
 ## Dependencies
 - RxSwift, Swinject and SwiftyMocky Libraries are added using Swift Package Manager.
