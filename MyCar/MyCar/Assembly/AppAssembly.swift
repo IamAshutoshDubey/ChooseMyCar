@@ -27,7 +27,11 @@ class AppAssembly: Assembly {
         }
 
         container.register(ManufacturersViewModel.self) { (resolver) in
-            return ManufacturersViewModel(api: resolver.resolve(CarAPI.self)!)
+            return ManufacturersViewModel(api: resolver.resolve(CarAPIType.self)!)
+        }
+        
+        container.register(AppRouterType.self) { (resolver) in
+            return AppRouter(resolver: resolver)
         }
 
     }
