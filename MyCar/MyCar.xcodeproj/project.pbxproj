@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,18 +14,15 @@
 		C5ACF6E3261ABC1900AB8BC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5ACF6E2261ABC1900AB8BC7 /* Assets.xcassets */; };
 		C5ACF6E6261ABC1900AB8BC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5ACF6E4261ABC1900AB8BC7 /* LaunchScreen.storyboard */; };
 		C5ACF6F1261ABC1900AB8BC7 /* MyCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF6F0261ABC1900AB8BC7 /* MyCarTests.swift */; };
-		C5ACF6FC261ABC1900AB8BC7 /* MyCarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF6FB261ABC1900AB8BC7 /* MyCarUITests.swift */; };
+		C5ACF720261ABDBA00AB8BC7 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = C5ACF71F261ABDBA00AB8BC7 /* Swinject */; };
+		C5ACF731261ABF6400AB8BC7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C5ACF730261ABF6400AB8BC7 /* RxSwift */; };
+		C5ACF735261ABF6400AB8BC7 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = C5ACF734261ABF6400AB8BC7 /* RxRelay */; };
+		C5ACF737261ABF6400AB8BC7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C5ACF736261ABF6400AB8BC7 /* RxCocoa */; };
+		C5ACF740261ABFD700AB8BC7 /* SwiftyMocky in Frameworks */ = {isa = PBXBuildFile; productRef = C5ACF73F261ABFD700AB8BC7 /* SwiftyMocky */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		C5ACF6ED261ABC1900AB8BC7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5ACF6CE261ABC1700AB8BC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C5ACF6D5261ABC1700AB8BC7;
-			remoteInfo = MyCar;
-		};
-		C5ACF6F8261ABC1900AB8BC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5ACF6CE261ABC1700AB8BC7 /* Project object */;
 			proxyType = 1;
@@ -46,7 +43,6 @@
 		C5ACF6EC261ABC1900AB8BC7 /* MyCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5ACF6F0261ABC1900AB8BC7 /* MyCarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarTests.swift; sourceTree = "<group>"; };
 		C5ACF6F2261ABC1900AB8BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5ACF6F7261ABC1900AB8BC7 /* MyCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5ACF6FB261ABC1900AB8BC7 /* MyCarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarUITests.swift; sourceTree = "<group>"; };
 		C5ACF6FD261ABC1900AB8BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +52,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5ACF735261ABF6400AB8BC7 /* RxRelay in Frameworks */,
+				C5ACF737261ABF6400AB8BC7 /* RxCocoa in Frameworks */,
+				C5ACF731261ABF6400AB8BC7 /* RxSwift in Frameworks */,
+				C5ACF720261ABDBA00AB8BC7 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,13 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C5ACF6F4261ABC1900AB8BC7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				C5ACF740261ABFD700AB8BC7 /* SwiftyMocky in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +77,7 @@
 				C5ACF6EF261ABC1900AB8BC7 /* MyCarTests */,
 				C5ACF6FA261ABC1900AB8BC7 /* MyCarUITests */,
 				C5ACF6D7261ABC1700AB8BC7 /* Products */,
+				C5ACF73E261ABFD700AB8BC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,7 +86,6 @@
 			children = (
 				C5ACF6D6261ABC1700AB8BC7 /* MyCar.app */,
 				C5ACF6EC261ABC1900AB8BC7 /* MyCarTests.xctest */,
-				C5ACF6F7261ABC1900AB8BC7 /* MyCarUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +122,13 @@
 			path = MyCarUITests;
 			sourceTree = "<group>";
 		};
+		C5ACF73E261ABFD700AB8BC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +145,12 @@
 			dependencies = (
 			);
 			name = MyCar;
+			packageProductDependencies = (
+				C5ACF71F261ABDBA00AB8BC7 /* Swinject */,
+				C5ACF730261ABF6400AB8BC7 /* RxSwift */,
+				C5ACF734261ABF6400AB8BC7 /* RxRelay */,
+				C5ACF736261ABF6400AB8BC7 /* RxCocoa */,
+			);
 			productName = MyCar;
 			productReference = C5ACF6D6261ABC1700AB8BC7 /* MyCar.app */;
 			productType = "com.apple.product-type.application";
@@ -162,27 +169,12 @@
 				C5ACF6EE261ABC1900AB8BC7 /* PBXTargetDependency */,
 			);
 			name = MyCarTests;
+			packageProductDependencies = (
+				C5ACF73F261ABFD700AB8BC7 /* SwiftyMocky */,
+			);
 			productName = MyCarTests;
 			productReference = C5ACF6EC261ABC1900AB8BC7 /* MyCarTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		C5ACF6F6261ABC1900AB8BC7 /* MyCarUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C5ACF706261ABC1900AB8BC7 /* Build configuration list for PBXNativeTarget "MyCarUITests" */;
-			buildPhases = (
-				C5ACF6F3261ABC1900AB8BC7 /* Sources */,
-				C5ACF6F4261ABC1900AB8BC7 /* Frameworks */,
-				C5ACF6F5261ABC1900AB8BC7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C5ACF6F9261ABC1900AB8BC7 /* PBXTargetDependency */,
-			);
-			name = MyCarUITests;
-			productName = MyCarUITests;
-			productReference = C5ACF6F7261ABC1900AB8BC7 /* MyCarUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -200,10 +192,6 @@
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = C5ACF6D5261ABC1700AB8BC7;
 					};
-					C5ACF6F6261ABC1900AB8BC7 = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = C5ACF6D5261ABC1700AB8BC7;
-					};
 				};
 			};
 			buildConfigurationList = C5ACF6D1261ABC1700AB8BC7 /* Build configuration list for PBXProject "MyCar" */;
@@ -215,13 +203,17 @@
 				Base,
 			);
 			mainGroup = C5ACF6CD261ABC1700AB8BC7;
+			packageReferences = (
+				C5ACF71E261ABDBA00AB8BC7 /* XCRemoteSwiftPackageReference "Swinject" */,
+				C5ACF724261ABDCE00AB8BC7 /* XCRemoteSwiftPackageReference "SwiftyMocky" */,
+				C5ACF72F261ABF6400AB8BC7 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = C5ACF6D7261ABC1700AB8BC7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				C5ACF6D5261ABC1700AB8BC7 /* MyCar */,
 				C5ACF6EB261ABC1900AB8BC7 /* MyCarTests */,
-				C5ACF6F6261ABC1900AB8BC7 /* MyCarUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,13 +230,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C5ACF6EA261ABC1900AB8BC7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C5ACF6F5261ABC1900AB8BC7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,14 +257,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5ACF6F3261ABC1900AB8BC7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C5ACF6FC261ABC1900AB8BC7 /* MyCarUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -287,11 +264,6 @@
 			isa = PBXTargetDependency;
 			target = C5ACF6D5261ABC1700AB8BC7 /* MyCar */;
 			targetProxy = C5ACF6ED261ABC1900AB8BC7 /* PBXContainerItemProxy */;
-		};
-		C5ACF6F9261ABC1900AB8BC7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C5ACF6D5261ABC1700AB8BC7 /* MyCar */;
-			targetProxy = C5ACF6F8261ABC1900AB8BC7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -513,46 +485,6 @@
 			};
 			name = Release;
 		};
-		C5ACF707261ABC1900AB8BC7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S697MHC6W2;
-				INFOPLIST_FILE = MyCarUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodeChallenge.-MyCar.MyCarUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyCar;
-			};
-			name = Debug;
-		};
-		C5ACF708261ABC1900AB8BC7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S697MHC6W2;
-				INFOPLIST_FILE = MyCarUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodeChallenge.-MyCar.MyCarUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyCar;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -583,16 +515,62 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5ACF706261ABC1900AB8BC7 /* Build configuration list for PBXNativeTarget "MyCarUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C5ACF707261ABC1900AB8BC7 /* Debug */,
-				C5ACF708261ABC1900AB8BC7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C5ACF71E261ABDBA00AB8BC7 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+		C5ACF724261ABDCE00AB8BC7 /* XCRemoteSwiftPackageReference "SwiftyMocky" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MakeAWishFoundation/SwiftyMocky";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.4;
+			};
+		};
+		C5ACF72F261ABF6400AB8BC7 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C5ACF71F261ABDBA00AB8BC7 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5ACF71E261ABDBA00AB8BC7 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		C5ACF730261ABF6400AB8BC7 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5ACF72F261ABF6400AB8BC7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		C5ACF734261ABF6400AB8BC7 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5ACF72F261ABF6400AB8BC7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		C5ACF736261ABF6400AB8BC7 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5ACF72F261ABF6400AB8BC7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		C5ACF73F261ABFD700AB8BC7 /* SwiftyMocky */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5ACF724261ABDCE00AB8BC7 /* XCRemoteSwiftPackageReference "SwiftyMocky" */;
+			productName = SwiftyMocky;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C5ACF6CE261ABC1700AB8BC7 /* Project object */;
 }
