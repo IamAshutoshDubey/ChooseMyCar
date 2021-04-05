@@ -44,7 +44,6 @@ struct ManufacturerResponse: Decodable {
             }
         }
         manufactures = tempManufactures
-        
     }
 }
 

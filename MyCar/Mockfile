@@ -1,0 +1,14 @@
+sourceryCommand: null
+sourceryTemplate: null
+MyCarTests:
+  sources:
+    include:
+    - ./MyCar
+  output: ./MyCarTests/Mock.generated.swift
+  targets:
+  - MyCarTests
+  testable:
+  - MyCar
+  import:
+  - Foundation
+  - RxSwift

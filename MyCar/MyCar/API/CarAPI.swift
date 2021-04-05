@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-
+//sourcery: AutoMockable
 protocol CarAPIType {
     var networkClient: NetworkClientType { get }
     func fetchManufacturers(page: Int) -> PublishSubject<ManufacturerResponse>

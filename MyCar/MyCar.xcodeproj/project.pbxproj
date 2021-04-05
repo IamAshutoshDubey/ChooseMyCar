@@ -27,6 +27,9 @@
 		C5ACF77E261AD73E00AB8BC7 /* CarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF77D261AD73E00AB8BC7 /* CarAPI.swift */; };
 		C5ACF78B261AD82A00AB8BC7 /* ManufacturerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF78A261AD82A00AB8BC7 /* ManufacturerResponse.swift */; };
 		C5ACF793261AD95700AB8BC7 /* CarModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF792261AD95700AB8BC7 /* CarModelResponse.swift */; };
+		C5ACF797261AF17D00AB8BC7 /* ResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF796261AF17D00AB8BC7 /* ResponseDecoder.swift */; };
+		C5ACF79B261AF8A400AB8BC7 /* Mock.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF79A261AF8A400AB8BC7 /* Mock.generated.swift */; };
+		C5ACF7A1261AF92E00AB8BC7 /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF7A0261AF92E00AB8BC7 /* DecoderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +54,6 @@
 		C5ACF6EC261ABC1900AB8BC7 /* MyCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5ACF6F0261ABC1900AB8BC7 /* MyCarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarTests.swift; sourceTree = "<group>"; };
 		C5ACF6F2261ABC1900AB8BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5ACF6FB261ABC1900AB8BC7 /* MyCarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarUITests.swift; sourceTree = "<group>"; };
-		C5ACF6FD261ABC1900AB8BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5ACF74A261AC5CA00AB8BC7 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		C5ACF769261ACEAB00AB8BC7 /* HTTPNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPNetworkError.swift; sourceTree = "<group>"; };
 		C5ACF76D261AD2EE00AB8BC7 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -61,6 +62,9 @@
 		C5ACF77D261AD73E00AB8BC7 /* CarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAPI.swift; sourceTree = "<group>"; };
 		C5ACF78A261AD82A00AB8BC7 /* ManufacturerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturerResponse.swift; sourceTree = "<group>"; };
 		C5ACF792261AD95700AB8BC7 /* CarModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelResponse.swift; sourceTree = "<group>"; };
+		C5ACF796261AF17D00AB8BC7 /* ResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDecoder.swift; sourceTree = "<group>"; };
+		C5ACF79A261AF8A400AB8BC7 /* Mock.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.generated.swift; sourceTree = "<group>"; };
+		C5ACF7A0261AF92E00AB8BC7 /* DecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +95,6 @@
 			children = (
 				C5ACF6D8261ABC1700AB8BC7 /* MyCar */,
 				C5ACF6EF261ABC1900AB8BC7 /* MyCarTests */,
-				C5ACF6FA261ABC1900AB8BC7 /* MyCarUITests */,
 				C5ACF6D7261ABC1700AB8BC7 /* Products */,
 				C5ACF73E261ABFD700AB8BC7 /* Frameworks */,
 			);
@@ -128,19 +131,12 @@
 		C5ACF6EF261ABC1900AB8BC7 /* MyCarTests */ = {
 			isa = PBXGroup;
 			children = (
+				C5ACF79A261AF8A400AB8BC7 /* Mock.generated.swift */,
 				C5ACF6F0261ABC1900AB8BC7 /* MyCarTests.swift */,
 				C5ACF6F2261ABC1900AB8BC7 /* Info.plist */,
+				C5ACF7A0261AF92E00AB8BC7 /* DecoderTests.swift */,
 			);
 			path = MyCarTests;
-			sourceTree = "<group>";
-		};
-		C5ACF6FA261ABC1900AB8BC7 /* MyCarUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C5ACF6FB261ABC1900AB8BC7 /* MyCarUITests.swift */,
-				C5ACF6FD261ABC1900AB8BC7 /* Info.plist */,
-			);
-			path = MyCarUITests;
 			sourceTree = "<group>";
 		};
 		C5ACF73E261ABFD700AB8BC7 /* Frameworks */ = {
@@ -181,6 +177,7 @@
 			children = (
 				C5ACF78A261AD82A00AB8BC7 /* ManufacturerResponse.swift */,
 				C5ACF792261AD95700AB8BC7 /* CarModelResponse.swift */,
+				C5ACF796261AF17D00AB8BC7 /* ResponseDecoder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5ACF779261AD3B400AB8BC7 /* NetworkConstants.swift in Sources */,
+				C5ACF797261AF17D00AB8BC7 /* ResponseDecoder.swift in Sources */,
 				C5ACF793261AD95700AB8BC7 /* CarModelResponse.swift in Sources */,
 				C5ACF76A261ACEAB00AB8BC7 /* HTTPNetworkError.swift in Sources */,
 				C5ACF6DE261ABC1700AB8BC7 /* ViewController.swift in Sources */,
@@ -317,6 +315,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5ACF79B261AF8A400AB8BC7 /* Mock.generated.swift in Sources */,
+				C5ACF7A1261AF92E00AB8BC7 /* DecoderTests.swift in Sources */,
 				C5ACF6F1261ABC1900AB8BC7 /* MyCarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

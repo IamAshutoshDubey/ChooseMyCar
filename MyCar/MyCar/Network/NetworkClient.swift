@@ -17,10 +17,12 @@ class NetworkClient: NSObject, NetworkClientType {
     let baseUrl: String
     var headers: [String: String] = [:]
     var session: URLSession?
+    var responseDecoder: ResponseDecoderType
     
-    public init(baseUrl: String, headers: [String: String] = [:]) {
+    public init(baseUrl: String, headers: [String: String] = [:], responseDecoder: ResponseDecoderType) {
         self.baseUrl = baseUrl
         self.headers = headers
+        self.responseDecoder = responseDecoder
     }
     
     func getRequest<ResponseType>(path: String, urlParameters: [String : String]) -> PublishSubject<ResponseType> where ResponseType : Decodable {
@@ -53,7 +55,7 @@ class NetworkClient: NSObject, NetworkClientType {
                             return
                         }
                         do {
-                            let apiResponse = try JSONDecoder().decode(ResponseType.self, from: responseData)
+                            let apiResponse: ResponseType = try self.responseDecoder.decode(responseData: responseData)
                             print(apiResponse)
                             responseSubject.onNext(apiResponse)
                         } catch {
