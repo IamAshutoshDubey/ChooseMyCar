@@ -21,6 +21,14 @@ class AppAssembly: Assembly {
             let decoder = resolver.resolve(ResponseDecoderType.self)!
             return NetworkClient(baseUrl: baseUrl, headers: headers, responseDecoder: decoder)
         }
+        
+        container.register(CarAPIType.self) { (resolver) in
+            return CarAPI(networkClient: resolver.resolve(NetworkClientType.self)!)
+        }
+
+        container.register(ManufacturersViewModel.self) { (resolver) in
+            return ManufacturersViewModel(api: resolver.resolve(CarAPI.self)!)
+        }
 
     }
 }

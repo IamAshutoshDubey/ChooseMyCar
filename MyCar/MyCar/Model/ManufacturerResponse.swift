@@ -45,6 +45,12 @@ struct ManufacturerResponse: Decodable {
         }
         manufactures = tempManufactures
     }
+    
+    init(page: Int, totalPageCount: Int, manufactures: [Manufacture]) {
+        self.page = page
+        self.totalPageCount = totalPageCount
+        self.manufactures = manufactures
+    }
 }
 
 
