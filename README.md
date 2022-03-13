@@ -9,7 +9,7 @@ MVVM with Coordinator (MVVM-C)
 ## Environment
 - iOS 13.0 and above
 - XCode 12.0
-- Swift 5
+- Swift 5.2
 
 ## Scope of Improvement 
 - Test case coverage could have been increased.
