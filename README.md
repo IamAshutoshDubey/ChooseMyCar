@@ -7,7 +7,7 @@ MVVM with Coordinator (MVVM-C)
 - RxSwift, Swinject and SwiftyMocky Libraries are added using Swift Package Manager.
 
 ## Environment
-- iOS 13.0 and above
+- iOS 14.0 and above
 - XCode 12.0
 - Swift 5.2
 
